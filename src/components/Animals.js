@@ -8,6 +8,7 @@ let animals = [
     type: 'Dog',
     description: faker.lorem.sentence(),
     image:'/images/kopek4.jpg',
+    objectId: '1'
 
 },
 {
@@ -15,6 +16,8 @@ let animals = [
     type: 'dog',
     description: faker.lorem.sentence(),
     image:'/images/dog1.jpg',
+    objectId: '2'
+
 
 },
 {
@@ -22,6 +25,7 @@ let animals = [
     type: 'dog',
     description: faker.lorem.sentence(),
     image:'/images/dog5.jpg',
+    objectId: '3'
 
 },
 {
@@ -29,13 +33,15 @@ let animals = [
     type: 'dog',
     description: faker.lorem.sentence(),
     image:'/images/kopek2.jpg',
+    objectId: '4'
 
 },
 {
     name : 'Sally',
     type: 'lion',
     description: faker.lorem.sentence(),
-    image:'/images/lion1.jpg'
+    image:'/images/lion1.jpg',
+    objectId: '5'
 
 },
 {
@@ -43,6 +49,7 @@ let animals = [
     type: 'lion',
     description: faker.lorem.sentence(),
     image:'/images/lion2.jpg',
+    objectId: '6'
 
 },
 
@@ -51,6 +58,7 @@ let animals = [
     type: 'lion',
     description: faker.lorem.sentence(),
     image:'/images/lion5.jpg',
+    objectId: '7'
 
 },
 {
@@ -58,6 +66,7 @@ let animals = [
     type: 'lion',
     description: faker.lorem.sentence(),
     image:'/images/lion6.jpg',
+    objectId: '9'
 
 },
 {
@@ -65,6 +74,7 @@ let animals = [
     type: 'sheep',
     description: faker.lorem.sentence(),
     image:'/images/kuzu2.jpg',
+    objectId: '9'
 
 },
 {
@@ -72,6 +82,7 @@ let animals = [
     type: 'sheep',
     description: faker.lorem.sentence(),
     image:'/images/kuzu3.jpg',
+    objectId: '10'
 
 },
 {
@@ -79,6 +90,7 @@ let animals = [
     type: 'sheep',
     description: faker.lorem.sentence(),
     image:'/images/kuzu4.jpg',
+    objectId: '11'
 
 },
 {
@@ -86,6 +98,7 @@ let animals = [
     type: 'sheep',
     description: faker.lorem.sentence(),
     image:'/images/kuzu11.jpg',
+    objectId: '12'
 
 },
 
@@ -102,13 +115,20 @@ likes:[],
 dislikes:[]
 
 }
+this.likeIt = this.likeIt.bind(this);
+this.dislikeIt = this.likeIt.bind(this);
 }
-likeIt =() => {
+likeIt =(animal) => {
 
-this.state.likes.push()
+this.setState({likes: [...this.state.likes, animal]}, () => {
+    console.log(this.state.likes) 
+})
+
 }
-dislikeIt =() => {
-    
+dislikeIt =(animal) => {
+    this.setState({dislikes: [...this.state.dislikes, animal]}, () => {
+        console.log(this.state.dislikes) 
+    })
 }
 discardIt =() => {
     
@@ -123,16 +143,16 @@ render(){
     return(
             <div  className="ui card" style={{width:'75%', padding:'20px'}}>
     <div className="content">
-<img src={animal.image} alt="..." style={{width:'300px', height:'310px'}}></img>
+<img src={animal.image} alt="..." style={{width:'200px', height:'280px'}}></img>
     <h2 className="meta">Name: {animal.name}</h2>
     <div className="meta"> Type: {animal.type}</div>
 <hr />
 <div className="description"> {animal.description}</div>
 <button className="ui blue button" style={{ margin:'10px 15px'}} onClick={()=>{
-return this.likeIt()
+return this.likeIt(animal)
 }}>Like</button>
 <button className="ui red button" style={{ margin:'10px 15px'}} onClick={()=>{
-return this.dislikeIt()
+return this.dislikeIt(animal)
 }}>Dislike</button>
 <button className="ui grey button" style={{ margin:'10px 15px'}} onClick={()=>{
 return this.discardIt()
@@ -144,7 +164,7 @@ return this.discardIt()
 
 
 )})}
-
+<div> Likes : </div>
 
 </div>
 
