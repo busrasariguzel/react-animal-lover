@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import faker from 'faker'
 
 let animals = [
 {
@@ -6,7 +7,7 @@ let animals = [
     name : 'Zeyno',
     type: 'Dog',
     description: faker.lorem.sentence(),
-    image:'',
+    image:'/images/kopek4.jpg',
 
 },
 {
@@ -97,14 +98,57 @@ constructor(){
 super()
 this.state = {
 animals,
+likes:[],
+dislikes:[]
+
 }
+}
+likeIt =() => {
+
+this.state.likes.push()
+}
+dislikeIt =() => {
+    
+}
+discardIt =() => {
+    
 }
 
 render(){
     return (
+        
         <div>
-            
-        </div>
+            <h1>Animal Lover</h1>
+            {this.state.animals.map((animal,idx)=>{
+    return(
+            <div  className="ui card" style={{width:'75%', padding:'20px'}}>
+    <div className="content">
+<img src={animal.image} alt="..." style={{width:'300px', height:'310px'}}></img>
+    <h2 className="meta">Name: {animal.name}</h2>
+    <div className="meta"> Type: {animal.type}</div>
+<hr />
+<div className="description"> {animal.description}</div>
+<button className="ui blue button" style={{ margin:'10px 15px'}} onClick={()=>{
+return this.likeIt()
+}}>Like</button>
+<button className="ui red button" style={{ margin:'10px 15px'}} onClick={()=>{
+return this.dislikeIt()
+}}>Dislike</button>
+<button className="ui grey button" style={{ margin:'10px 15px'}} onClick={()=>{
+return this.discardIt()
+}}>Discard</button>
+
+</div> 
+</div>
+        
+
+
+)})}
+
+
+</div>
+
+
     )
 }
 
