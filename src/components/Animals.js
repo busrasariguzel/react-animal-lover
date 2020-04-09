@@ -139,36 +139,78 @@ render(){
         
         <div>
             <h1>Animal Lover</h1>
+    <div className = "main section" 
+    style={{
+        display:'flex',
+        flexDirection:"row"
+    }}>
+<div className="display section"
+style={{
+    display:'grid',
+    height:'100%',
+    // gridTemplateRows: "100px",
+    gridTemplateColumns: "repeat(3, 1fr)",
+    flexDirection:"column"
+}}>
             {this.state.animals.map((animal,idx)=>{
     return(
-            <div  className="ui card" style={{width:'75%', padding:'20px'}}>
+            <div  key={idx} className="ui card" style={{width:'75%', padding:'20px'}}>
     <div className="content">
 <img src={animal.image} alt="..." style={{width:'200px', height:'280px'}}></img>
-    <h2 className="meta">Name: {animal.name}</h2>
-    <div className="meta"> Type: {animal.type}</div>
-<hr />
+    <h2>{animal.name}</h2>
+    <div className="meta">{animal.type}</div>
 <div className="description"> {animal.description}</div>
-<button className="ui blue button" style={{ margin:'10px 15px'}} onClick={()=>{
+
+<hr />
+
+<div className="buttons"
+style={{
+    display:'flex',
+    flexDirection:'row',
+    paddingLeft: '0px',
+    alignItems: 'start',
+    // height:'2px'
+}}>
+
+<button className="ui blue button" style={{ margin:'8px 12px'}} onClick={()=>{
 return this.likeIt(animal)
 }}>Like</button>
-<button className="ui red button" style={{ margin:'10px 15px'}} onClick={()=>{
+<button className="ui red button" style={{ margin:'8px 12px'}} onClick={()=>{
 return this.dislikeIt(animal)
 }}>Dislike</button>
-<button className="ui grey button" style={{ margin:'10px 15px'}} onClick={()=>{
+<button className="ui grey button" style={{ margin:'8px 12px'}} onClick={()=>{
 return this.discardIt()
 }}>Discard</button>
 
-</div> 
 </div>
-        
-
-
-)})}
-<div> Likes : </div>
-
 </div>
 
+</div>
+// </div>
+)})} 
 
+
+
+
+
+
+</div>
+{/* map ends */}
+<div className="section2">
+<div className="likes"> 
+    <h2>Likes </h2>
+{this.state.likes.name}
+</div>
+<div className="dislikes"> 
+    <h2>Dislikes </h2>
+</div>
+</div>
+
+</div>
+
+
+{/* main div ends */}
+</div>
     )
 }
 
