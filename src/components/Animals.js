@@ -92,18 +92,21 @@ let animals = [
 
 
 
-
-
-
 class Animal extends Component {
 constructor(){
 super()
 this.state = {
-
+animals,
 }
 }
 
-
+render(){
+    return (
+        <div>
+            
+        </div>
+    )
+}
 
 }
 
