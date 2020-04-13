@@ -112,22 +112,30 @@ super()
 this.state = {
 animals,
 likes:[],
-dislikes:[]
+dislikes:[],
+
 
 }
 this.likeIt = this.likeIt.bind(this);
 this.dislikeIt = this.likeIt.bind(this);
 }
 likeIt =(animal) => {
-
+// if (!this.state.likes.includes(animal)){
+//     if(this.state.dislikes.includes(animal)){
+//         let dislikes2 = this.state.dislikes.filter(item=> item !==animal)
+//         this.setState({dislikes: dislikes2})
+//     }
+// }
 this.setState({likes: [...this.state.likes, animal]}, () => {
-    console.log(this.state.likes) 
+    // this.state.likes.map(item =>{
+console.log(this.state.likes.name)
+    // })
 })
 
 }
 dislikeIt =(animal) => {
     this.setState({dislikes: [...this.state.dislikes, animal]}, () => {
-        console.log(this.state.dislikes) 
+        console.log(this.state.dislikes.name) 
     })
 }
 discardIt =() => {
@@ -173,7 +181,7 @@ style={{
 }}>
 
 <button className="ui blue button" style={{ margin:'8px 12px'}} onClick={()=>{
-return this.likeIt(animal)
+return this.likeIt()
 }}>Like</button>
 <button className="ui red button" style={{ margin:'8px 12px'}} onClick={()=>{
 return this.dislikeIt(animal)
